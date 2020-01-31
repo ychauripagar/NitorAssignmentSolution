@@ -16,12 +16,30 @@ class _UserItemWidgetState extends State<UserItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text('${widget.userItem.login}'),
-            subtitle: Text(widget.userItem.id.toString()),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage: NetworkImage(widget.userItem.avatarUrl),
+              radius: 25,
+            ),
+            title: Text(
+              '${widget.userItem.login}',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Row(
+              children: <Widget>[
+                Expanded(child: Text('Id: ${widget.userItem.id.toString()}')),
+                Expanded(
+                    child: Text('Score: ${widget.userItem.id.toString()}')),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_right,
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),

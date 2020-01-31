@@ -47,11 +47,12 @@ class UserItem {
 
 class Users with ChangeNotifier {
   List<UserItem> _users = [];
+  List<UserItem> _filterUsers = [];
 
   Users();
 
   List<UserItem> get getUsers {
-    return [..._users];
+    return [..._filterUsers];
   }
 
   Future<void> fetchAndSetUsers() async {
@@ -68,10 +69,39 @@ class Users with ChangeNotifier {
           id: userData['id'],
           login: userData['login'],
           avatarUrl: userData['avatar_url'],
+          nodeId: userData['node_id'],
+          gravatarId: userData['gravatar_id'],
+          url: userData['url'],
+          htmlUrl: userData['html_url'],
+          followersUrl: userData['followers_url'],
+          followingUrl: userData['following_url'],
+          gistsUrl: userData['gists_url'],
+          starredUrl: userData['starred_url'],
+          subscriptionsUrl: userData['subscriptions_url'],
+          organizationsUrl: userData['organizations_url'],
+          reposUrl: userData['repos_url'],
+          eventsUrl: userData['events_url'],
+          receivedEventsUrl: userData['received_events_url'],
+          type: userData['type'],
+          siteAdmin: userData['site_admin'],
         ),
       );
     });
     _users = loadedUsers;
+    _filterUsers = [..._users];
+    notifyListeners();
+  }
+
+  void filterUsers(String searchString) {
+    if (searchString.isNotEmpty) {
+      _filterUsers.retainWhere((item) => item.login.contains(searchString));
+    }
+    notifyListeners();
+  }
+
+  void resetRecords() {
+    _filterUsers.clear();
+    _filterUsers = [..._users];
     notifyListeners();
   }
 }

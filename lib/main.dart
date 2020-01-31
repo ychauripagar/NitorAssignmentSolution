@@ -14,7 +14,7 @@ class MyNitorAssignmentApp extends StatelessWidget {
         title: 'Nitor Assignment',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.purple,
+          primaryColor: Colors.purple,
           accentColor: Colors.deepOrange,
           fontFamily: 'Lato',
         ),
