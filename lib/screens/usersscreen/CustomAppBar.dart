@@ -44,7 +44,8 @@ class _UserScreenAppBarState extends State<UserScreenAppBar> {
             ? IconButton(
                 icon: Icon(Icons.cancel),
                 onPressed: () {
-                  Provider.of<Users>(context, listen: false).resetRecords();
+                  Provider.of<UsersProvider>(context, listen: false)
+                      .resetRecords();
                 },
               )
             : SizedBox(
@@ -79,12 +80,13 @@ class _UserScreenAppBarState extends State<UserScreenAppBar> {
       if (_filter.text.isEmpty) {
         setState(() {
           _searchText = "";
-          Provider.of<Users>(context, listen: false).resetRecords();
+          Provider.of<UsersProvider>(context, listen: false).resetRecords();
         });
       } else {
         setState(() {
           _searchText = _filter.text;
-          Provider.of<Users>(context, listen: false).filterUsers(_searchText);
+          Provider.of<UsersProvider>(context, listen: false)
+              .filterUsers(_searchText);
         });
       }
     });

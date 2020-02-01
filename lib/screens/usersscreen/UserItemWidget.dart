@@ -16,7 +16,7 @@ class UserItemWidget extends StatefulWidget {
 }
 
 class _UserItemWidgetState extends State<UserItemWidget> {
-  UserDetails _userDetails = new UserDetails();
+  UserDetailsProvider _userDetails = new UserDetailsProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,19 @@ class _UserItemWidgetState extends State<UserItemWidget> {
                           ),
                         ),
                         onPressed: () async {
-                          UserDetailsItem _userDetailsItem = await _userDetails
-                              .fetchAndSetUserDetails(widget.userItem.login);
+                          if (!AppMethods.isLoading) {
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (buildContext) {
+                                  return AppMethods.loading;
+                                });
+                          }
+                          UserDetailsItem _userDetailsItem =
+                              await _userDetails.fetchAndSetUserDetails(
+                                  context, widget.userItem.login);
+
+                          if (!AppMethods.isLoading) Navigator.pop(context);
                           if (_userDetailsItem != null) {
                             AppMethods.openScreen(context,
                                 UserDetailsScreen(_userDetailsItem), false);

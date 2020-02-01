@@ -9,8 +9,8 @@ void main() => runApp(MyNitorAssignmentApp());
 class MyNitorAssignmentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Users>(
-      create: (_) => Users(),
+    return ChangeNotifierProvider<UsersProvider>(
+      create: (_) => UsersProvider(),
       child: MaterialApp(
         title: 'Nitor Assignment',
         debugShowCheckedModeBanner: false,

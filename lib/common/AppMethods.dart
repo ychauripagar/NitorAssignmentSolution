@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AppMethods {
-//region Open Screen
+
+//region  openScreen
+// custom function to open new Screen
   static void openScreen(BuildContext buildContext, Widget screenWidgetName,
       bool isPushReplacement) {
     print("" + screenWidgetName.toString());
@@ -17,5 +20,16 @@ class AppMethods {
       );
     }
   }
+
 //endregion
+
+//region Loading
+  static bool isLoading = false;
+
+  static var loading = SpinKitDualRing(
+    color: Colors.purple,
+    size: 50.0,
+  );
+//endregion Loading
+
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nitorassignmentsolution/screens/usersscreen/CustomAppBar.dart';
 import 'package:nitorassignmentsolution/providers/UsersProvider.dart';
 import 'package:nitorassignmentsolution/screens/usersscreen/UserItemWidget.dart';
-import 'package:provider/provider.dart';
 
 class FollowersAndFollowingScreen extends StatefulWidget {
   static const routeName = '/users';
@@ -34,6 +32,7 @@ class _FollowersAndFollowingScreenState
     _currentIndex = widget.tabIndex;
     _tabController.index = widget.tabIndex;
   }
+
 
   _handleTabSelection() {
     setState(() {
