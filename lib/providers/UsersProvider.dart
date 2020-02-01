@@ -104,4 +104,79 @@ class Users with ChangeNotifier {
     _filterUsers = [..._users];
     notifyListeners();
   }
+
+  Future<List<UserItem>> fetchAndSetFollowers(String login) async {
+    final response =
+        await http.get(AppConstant.url + "/users/$login/followers");
+    final List<UserItem> loadedUsers = [];
+    final extractedData = json.decode(response.body);
+    if (extractedData == null) {
+      return null;
+    }
+    extractedData.forEach((userData) {
+      loadedUsers.add(
+        UserItem(
+          id: userData['id'],
+          login: userData['login'],
+          avatarUrl: userData['avatar_url'],
+          nodeId: userData['node_id'],
+          gravatarId: userData['gravatar_id'],
+          url: userData['url'],
+          htmlUrl: userData['html_url'],
+          followersUrl: userData['followers_url'],
+          followingUrl: userData['following_url'],
+          gistsUrl: userData['gists_url'],
+          starredUrl: userData['starred_url'],
+          subscriptionsUrl: userData['subscriptions_url'],
+          organizationsUrl: userData['organizations_url'],
+          reposUrl: userData['repos_url'],
+          eventsUrl: userData['events_url'],
+          receivedEventsUrl: userData['received_events_url'],
+          type: userData['type'],
+          siteAdmin: userData['site_admin'],
+        ),
+      );
+    });
+    // notifyListeners();
+
+    return loadedUsers;
+  }
+
+  Future<List<UserItem>> fetchAndSetFollowing(String login) async {
+    final response =
+        await http.get(AppConstant.url + "/users/$login/following");
+    final List<UserItem> loadedUsers = [];
+    final extractedData = json.decode(response.body);
+    if (extractedData == null) {
+      return null;
+    }
+    extractedData.forEach((userData) {
+      loadedUsers.add(
+        UserItem(
+          id: userData['id'],
+          login: userData['login'],
+          avatarUrl: userData['avatar_url'],
+          nodeId: userData['node_id'],
+          gravatarId: userData['gravatar_id'],
+          url: userData['url'],
+          htmlUrl: userData['html_url'],
+          followersUrl: userData['followers_url'],
+          followingUrl: userData['following_url'],
+          gistsUrl: userData['gists_url'],
+          starredUrl: userData['starred_url'],
+          subscriptionsUrl: userData['subscriptions_url'],
+          organizationsUrl: userData['organizations_url'],
+          reposUrl: userData['repos_url'],
+          eventsUrl: userData['events_url'],
+          receivedEventsUrl: userData['received_events_url'],
+          type: userData['type'],
+          siteAdmin: userData['site_admin'],
+        ),
+      );
+    });
+    // _followings = loadedUsers;
+    // notifyListeners();
+
+    return loadedUsers;
+  }
 }

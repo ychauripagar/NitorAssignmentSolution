@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nitorassignmentsolution/providers/UsersProvider.dart';
-import 'package:nitorassignmentsolution/screens/UsersScreen.dart';
 import 'package:provider/provider.dart';
+
+import 'screens/usersscreen/UsersScreen.dart';
 
 void main() => runApp(MyNitorAssignmentApp());
 
@@ -19,9 +20,6 @@ class MyNitorAssignmentApp extends StatelessWidget {
           fontFamily: 'Lato',
         ),
         home: UsersScreen(),
-        routes: {
-          UsersScreen.routeName: (ctx) => UsersScreen(),
-        },
       ),
     );
   }

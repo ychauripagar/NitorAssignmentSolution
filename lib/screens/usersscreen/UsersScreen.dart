@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nitorassignmentsolution/models/CustomAppBar.dart';
+import 'package:nitorassignmentsolution/screens/usersscreen/CustomAppBar.dart';
 import 'package:nitorassignmentsolution/providers/UsersProvider.dart';
-import 'package:nitorassignmentsolution/widgets/UserItemWidget.dart';
+import 'package:nitorassignmentsolution/screens/usersscreen/UserItemWidget.dart';
 import 'package:provider/provider.dart';
 
 class UsersScreen extends StatelessWidget {
@@ -36,7 +36,7 @@ class UsersScreen extends StatelessWidget {
                         primary: false,
                         itemCount: userData.getUsers.length,
                         itemBuilder: (ctx, i) =>
-                            UserItemWidget(userData.getUsers[i]),
+                            UserItemWidget(userData.getUsers[i],true),
                       ),
                     );
                   }
