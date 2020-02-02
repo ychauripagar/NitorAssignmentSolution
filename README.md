@@ -17,13 +17,13 @@ Flutter application which would let users help search and analyze GitHub users c
     ![](assets/setup/1.png)
 
  2) Enter url https://github.com/ychauripagar/NitorAssignmentSolution.git and click Test button. It will display **connection is successful**.
-   Select the path you want to store the project. After that click on **Clone**.
+   Select the path you want to store the project. After that click on **Clone** .
    
-    ![](assets/setup/2.png)
+   ![](assets/setup/2.png)
     
  3)  It will display Dialog, click on **No** 
      
-    ![](assets/setup/3.png)
+   ![](assets/setup/3.png)
     
  4) Now click on **Open an existing android studio project** and it will load your project
  
