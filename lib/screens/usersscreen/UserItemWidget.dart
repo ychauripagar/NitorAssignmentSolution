@@ -66,9 +66,10 @@ class _UserItemWidgetState extends State<UserItemWidget> {
 
                           if (!AppMethods.isLoading) Navigator.pop(context);
                           if (_userDetailsItem != null) {
-                            AppMethods.openScreen(context,
+
+                       AppMethods.openScreen(context,
                                 UserDetailsScreen(_userDetailsItem), false);
-                          }
+                         }
                         },
                       )
                     : SizedBox(

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:nitorassignmentsolution/common/AppMethods.dart';
+import 'package:nitorassignmentsolution/providers/UserDetailsProvider.dart';
 import 'package:nitorassignmentsolution/providers/UsersProvider.dart';
 import 'package:nitorassignmentsolution/screens/usersscreen/UserItemWidget.dart';
+
+import 'UserDetailsScreen.dart';
 
 class FollowersAndFollowingScreen extends StatefulWidget {
   static const routeName = '/users';
   final List<UserItem> _followersUserItem;
   final List<UserItem> _followingsUserItem;
-  final String userName;
+  final UserDetailsItem _userDetailsItem;
   final int tabIndex;
 
   FollowersAndFollowingScreen(this._followersUserItem, this._followingsUserItem,
-      this.userName, this.tabIndex);
+      this._userDetailsItem, this.tabIndex);
 
   @override
   _FollowersAndFollowingScreenState createState() =>
@@ -33,7 +37,6 @@ class _FollowersAndFollowingScreenState
     _tabController.index = widget.tabIndex;
   }
 
-
   _handleTabSelection() {
     setState(() {
       _currentIndex = _tabController.index;
@@ -50,12 +53,22 @@ class _FollowersAndFollowingScreenState
 
   @override
   Widget build(BuildContext context) {
-    print('getting users');
+    print('getting followers and following');
 
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text(
-            widget.userName,
+            widget._userDetailsItem.name,
+          ),
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+              AppMethods.openScreen(
+                  context, UserDetailsScreen(widget._userDetailsItem), false);
+            },
           ),
         ),
         body: Column(

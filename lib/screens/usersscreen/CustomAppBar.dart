@@ -59,6 +59,7 @@ class _UserScreenAppBarState extends State<UserScreenAppBar> {
     return Column(
       children: <Widget>[
         AppBar(
+          centerTitle: true,
           backgroundColor: Theme.of(context).primaryColor,
           title: const Text(
             'GitHub',

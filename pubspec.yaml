@@ -24,6 +24,9 @@ dependencies:
   intl: ^0.16.1
   http: ^0.12.0+4
 
+  #Required below for sharing profile
+  share: ^0.6.3+5
+
   #Required below for Loading Animation
   flutter_spinkit: ^2.1.0
 

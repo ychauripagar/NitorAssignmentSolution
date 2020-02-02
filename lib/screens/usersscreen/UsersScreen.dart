@@ -27,7 +27,7 @@ class UsersScreen extends StatelessWidget {
                   if (dataSnapshot.error != null) {
                     // Do error handling stuff
                     print(dataSnapshot.error.toString());
-                    return Center(
+                    return const Center(
                       child: Text('An error occurred!'),
                     );
                   } else {

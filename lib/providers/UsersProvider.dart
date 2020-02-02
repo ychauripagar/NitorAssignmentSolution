@@ -63,7 +63,11 @@ class UsersProvider with ChangeNotifier {
    set the ui
    */
   Future<void> fetchAndSetUsers() async {
-    final response = await http.get(AppConstant.url + "/users");
+    final response =
+        await http.get(AppConstant.url + "/users").catchError((error) {
+      print(error.toString());
+      return null;
+    });
 
     final List<UserItem> loadedUsers = [];
     final extractedData = json.decode(response.body);
