@@ -6,6 +6,7 @@ import 'package:share/share.dart';
 
 import 'FollowersAndFollowingScreen.dart';
 
+///Display Detail information of github User.
 class UserDetailsScreen extends StatelessWidget {
   static const routeName = '/userdetails';
   final UserDetailsItem _userDetailsItem;
@@ -14,6 +15,8 @@ class UserDetailsScreen extends StatelessWidget {
 
   final UsersProvider _user = new UsersProvider();
 
+  ///profileOtherDetails build widget for user details displayed
+  ///at the bottom in the card
   Widget profileOtherDetails() {
     return Container(
       width: double.maxFinite,
@@ -68,7 +71,7 @@ class UserDetailsScreen extends StatelessWidget {
                     : _userDetailsItem.updatedAt,
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
-              const  Text(
+              const Text(
                 "Blog :",
                 style: TextStyle(fontSize: 14, color: Colors.black87),
               ),
@@ -90,12 +93,12 @@ class UserDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title:const Text(
+        title: const Text(
           "Profile",
         ),
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon:const Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -104,9 +107,8 @@ class UserDetailsScreen extends StatelessWidget {
           },
         ),
         actions: <Widget>[
-
           IconButton(
-            icon:const Icon(
+            icon: const Icon(
               Icons.share,
               color: Colors.white,
             ),
@@ -125,7 +127,7 @@ class UserDetailsScreen extends StatelessWidget {
               primary: false,
               shrinkWrap: true,
               children: <Widget>[
-                const  SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Align(
@@ -194,11 +196,8 @@ class UserDetailsScreen extends StatelessWidget {
                         if (_followersUserItem != null) {
                           AppMethods.openScreen(
                               context,
-                              FollowersAndFollowingScreen(
-                                  _followersUserItem,
-                                  _followingsUserItem,
-                                  _userDetailsItem,
-                                  0),
+                              FollowersAndFollowingScreen(_followersUserItem,
+                                  _followingsUserItem, _userDetailsItem, 0),
                               false);
                         }
                       },
@@ -231,11 +230,8 @@ class UserDetailsScreen extends StatelessWidget {
                         if (_followersUserItem != null) {
                           AppMethods.openScreen(
                               context,
-                              FollowersAndFollowingScreen(
-                                  _followersUserItem,
-                                  _followingsUserItem,
-                                  _userDetailsItem,
-                                  1),
+                              FollowersAndFollowingScreen(_followersUserItem,
+                                  _followingsUserItem, _userDetailsItem, 1),
                               false);
                         }
                       },

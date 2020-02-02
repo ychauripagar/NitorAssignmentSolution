@@ -5,6 +5,8 @@ import 'package:nitorassignmentsolution/screens/userdetailsscreen/UserDetailsScr
 
 import '../../providers/UsersProvider.dart';
 
+/// User Item which contains the widgets to be displayed
+/// in the single single row in List View
 class UserItemWidget extends StatefulWidget {
   final UserItem userItem;
   final bool isUserScreen;
@@ -66,10 +68,9 @@ class _UserItemWidgetState extends State<UserItemWidget> {
 
                           if (!AppMethods.isLoading) Navigator.pop(context);
                           if (_userDetailsItem != null) {
-
-                       AppMethods.openScreen(context,
+                            AppMethods.openScreen(context,
                                 UserDetailsScreen(_userDetailsItem), false);
-                         }
+                          }
                         },
                       )
                     : SizedBox(

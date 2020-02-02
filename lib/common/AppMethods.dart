@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+///AppMethods class contains the common methods used in the projects
 class AppMethods {
-
 //region  openScreen
-// custom function to open new Screen
+  /// custom function to open new Screen
   static void openScreen(BuildContext buildContext, Widget screenWidgetName,
       bool isPushReplacement) {
     print("" + screenWidgetName.toString());

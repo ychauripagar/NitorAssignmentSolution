@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:nitorassignmentsolution/common/AppConstant.dart';
 import 'package:nitorassignmentsolution/common/AppMethods.dart';
 
+///UserDetailsItem is POJO class for storing the UserDetails information
 class UserDetailsItem {
   final String login;
   final int id;
@@ -74,15 +75,13 @@ class UserDetailsItem {
   });
 }
 
+///UserDetailsProvider will provide User Details data to UserDetails screen
 class UserDetailsProvider with ChangeNotifier {
   UserDetailsItem _userDetails;
 
   UserDetailsProvider();
 
-  /*
-   Fetch user details data and
-   set the ui
-   */
+  /// Fetch user details data and set the ui
   Future<UserDetailsItem> fetchAndSetUserDetails(
       BuildContext context, String login) async {
     final response =

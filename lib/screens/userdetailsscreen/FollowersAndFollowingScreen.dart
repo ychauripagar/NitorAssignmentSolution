@@ -6,6 +6,7 @@ import 'package:nitorassignmentsolution/screens/usersscreen/UserItemWidget.dart'
 
 import 'UserDetailsScreen.dart';
 
+///Display followers & Following in Tab.
 class FollowersAndFollowingScreen extends StatefulWidget {
   static const routeName = '/users';
   final List<UserItem> _followersUserItem;

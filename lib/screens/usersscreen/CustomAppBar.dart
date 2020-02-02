@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nitorassignmentsolution/providers/UsersProvider.dart';
 import 'package:provider/provider.dart';
 
+///Custom AppBar which display AppBar and search input.
 class UserScreenAppBar extends StatefulWidget {
   @override
   _UserScreenAppBarState createState() => _UserScreenAppBarState();

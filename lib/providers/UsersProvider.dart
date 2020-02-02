@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:nitorassignmentsolution/common/AppConstant.dart';
 import 'package:nitorassignmentsolution/common/AppMethods.dart';
 
+///UserItem is POJO class for storing the User information
 class UserItem {
   final String login;
   final int id;
@@ -48,6 +49,7 @@ class UserItem {
       this.siteAdmin});
 }
 
+///UsersProvider will provide User data to User screen
 class UsersProvider with ChangeNotifier {
   List<UserItem> _users = [];
   List<UserItem> _filterUsers = [];
@@ -58,10 +60,7 @@ class UsersProvider with ChangeNotifier {
     return [..._filterUsers];
   }
 
-  /*
-   Fetch users data and
-   set the ui
-   */
+  /// Fetch users data and set the ui
   Future<void> fetchAndSetUsers() async {
     final response =
         await http.get(AppConstant.url + "/users").catchError((error) {
@@ -103,10 +102,8 @@ class UsersProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /*
-   Filter users based on input search and
-   set the ui with filtered data
-   */
+  /// Filter users based on input search and
+  /// set the ui with filtered data
   void filterUsers(String searchString) {
     if (searchString.isNotEmpty) {
       _filterUsers.retainWhere((item) => item.login.contains(searchString));
@@ -114,19 +111,15 @@ class UsersProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /*
-  reset records on clear button clicked or searchString equal to empty
-   */
+  /// reset records on clear button clicked or
+  /// searchString equal to empty
   void resetRecords() {
     _filterUsers.clear();
     _filterUsers = [..._users];
     notifyListeners();
   }
 
-  /*
-   Fetch followers data and
-   set the ui
-   */
+  /// Fetch followers data and set the ui
   Future<List<UserItem>> fetchAndSetFollowers(
       BuildContext context, String login) async {
     final response = await http
@@ -174,10 +167,7 @@ class UsersProvider with ChangeNotifier {
     return loadedUsers;
   }
 
-  /*
-   Fetch following data and
-   set the ui
-   */
+  /// Fetch following data and set the ui
   Future<List<UserItem>> fetchAndSetFollowing(
       BuildContext context, String login) async {
     final response = await http
