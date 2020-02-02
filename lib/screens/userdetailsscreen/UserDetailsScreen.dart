@@ -75,9 +75,13 @@ class UserDetailsScreen extends StatelessWidget {
                 "Blog :",
                 style: TextStyle(fontSize: 14, color: Colors.black87),
               ),
-              Text(
-                _userDetailsItem.blog == null ? "" : "${_userDetailsItem.blog}",
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+              FittedBox(
+                child: Text(
+                  _userDetailsItem.blog == null
+                      ? ""
+                      : "${_userDetailsItem.blog}",
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
               ),
             ],
           ),
@@ -95,6 +99,9 @@ class UserDetailsScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           "Profile",
+          style: TextStyle(
+            fontFamily: 'Loto',
+          ),
         ),
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -142,9 +149,12 @@ class UserDetailsScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Center(
-                  child: Text(
-                    _userDetailsItem.name,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  child: FittedBox(
+                    child: Text(
+                      _userDetailsItem.name,
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Row(

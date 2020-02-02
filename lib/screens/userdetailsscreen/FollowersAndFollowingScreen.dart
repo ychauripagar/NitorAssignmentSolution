@@ -59,8 +59,13 @@ class _FollowersAndFollowingScreenState
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
-            widget._userDetailsItem.name,
+          title: FittedBox(
+            child: Text(
+              widget._userDetailsItem.name,
+              style: TextStyle(
+                fontFamily: 'Loto',
+              ),
+            ),
           ),
           automaticallyImplyLeading: false,
           leading: IconButton(

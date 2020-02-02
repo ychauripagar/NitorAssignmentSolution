@@ -64,7 +64,10 @@ class _UserScreenAppBarState extends State<UserScreenAppBar> {
           backgroundColor: Theme.of(context).primaryColor,
           title: const Text(
             'GitHub',
-            style: TextStyle(fontWeight: FontWeight.w900),
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontFamily: 'Loto',
+            ),
           ),
         ),
         Container(
