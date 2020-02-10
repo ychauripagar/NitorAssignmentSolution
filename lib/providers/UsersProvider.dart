@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -51,7 +52,6 @@ class UserItem {
 
 ///UsersProvider will provide User data to User screen
 class UsersProvider with ChangeNotifier {
-  List<UserItem> _users = [];
   List<UserItem> _filterUsers = [];
 
   UsersProvider();
@@ -60,21 +60,28 @@ class UsersProvider with ChangeNotifier {
     return [..._filterUsers];
   }
 
-  /// Fetch users data and set the ui
-  Future<void> fetchAndSetUsers() async {
-    final response =
-        await http.get(AppConstant.url + "/users").catchError((error) {
+  /// Filter users based on input search and
+  /// set the ui with filtered data
+  Future<List<UserItem>> filterUsers(String searchString, pageNo) async {
+  var url = AppConstant.url + "/search/users?q=$searchString&page=$pageNo";
+  print(url);
+    final response = await http
+        .get(url)
+        .catchError((error) {
       print(error.toString());
       return null;
     });
 
-    final List<UserItem> loadedUsers = [];
+    if (response != null && response.statusCode != 200) {
+      throw HttpException("Failed to load users...${response.statusCode.toString()}");
+    }
+
     final extractedData = json.decode(response.body);
     if (extractedData == null) {
-      return;
+      return null;
     }
-    extractedData.forEach((userData) {
-      loadedUsers.add(
+    extractedData['items'].forEach((userData) {
+      _filterUsers.add(
         UserItem(
           id: userData['id'],
           login: userData['login'],
@@ -97,26 +104,16 @@ class UsersProvider with ChangeNotifier {
         ),
       );
     });
-    _users = loadedUsers;
-    _filterUsers = [..._users];
-    notifyListeners();
-  }
 
-  /// Filter users based on input search and
-  /// set the ui with filtered data
-  void filterUsers(String searchString) {
-    if (searchString.isNotEmpty) {
-      _filterUsers.retainWhere((item) => item.login.contains(searchString));
-    }
     notifyListeners();
+    return _filterUsers;
   }
 
   /// reset records on clear button clicked or
   /// searchString equal to empty
   void resetRecords() {
     _filterUsers.clear();
-    _filterUsers = [..._users];
-    notifyListeners();
+    //  notifyListeners();
   }
 
   /// Fetch followers data and set the ui

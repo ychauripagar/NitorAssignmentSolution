@@ -26,10 +26,15 @@ class _UserItemWidgetState extends State<UserItemWidget> {
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.white,
-              backgroundImage: NetworkImage(widget.userItem.avatarUrl),
-              radius: 25,
+            ///for hero animation
+            leading: Hero(
+              tag: widget.userItem.login,
+              transitionOnUserGestures: true,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: NetworkImage(widget.userItem.avatarUrl),
+                radius: 25,
+              ),
             ),
             title: Text(
               '${widget.userItem.login}',
@@ -54,19 +59,10 @@ class _UserItemWidgetState extends State<UserItemWidget> {
                           ),
                         ),
                         onPressed: () async {
-                          if (!AppMethods.isLoading) {
-                            showDialog(
-                                context: context,
-                                barrierDismissible: false,
-                                builder: (buildContext) {
-                                  return AppMethods.loading;
-                                });
-                          }
                           UserDetailsItem _userDetailsItem =
                               await _userDetails.fetchAndSetUserDetails(
                                   context, widget.userItem.login);
 
-                          if (!AppMethods.isLoading) Navigator.pop(context);
                           if (_userDetailsItem != null) {
                             AppMethods.openScreen(context,
                                 UserDetailsScreen(_userDetailsItem), false);

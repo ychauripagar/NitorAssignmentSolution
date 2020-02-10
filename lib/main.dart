@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 
 import 'screens/usersscreen/UsersScreen.dart';
 
-void main() => runApp(MyNitorAssignmentApp());
+void main() {
+  runApp(MyNitorAssignmentApp());
+}
 
 class MyNitorAssignmentApp extends StatelessWidget {
   @override

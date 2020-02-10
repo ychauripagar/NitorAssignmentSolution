@@ -31,7 +31,7 @@ class UserDetailsItem {
   final String blog;
   final String location;
   final String email;
-  final String hireable;
+  final bool hireable;
   final String bio;
   final int publicRepos;
   final int publicGists;
@@ -84,8 +84,11 @@ class UserDetailsProvider with ChangeNotifier {
   /// Fetch user details data and set the ui
   Future<UserDetailsItem> fetchAndSetUserDetails(
       BuildContext context, String login) async {
+
+    var url = AppConstant.url + "/users/$login";
+    print(url);
     final response =
-        await http.get(AppConstant.url + "/users/$login").catchError((error) {
+        await http.get(url).catchError((error) {
       print(error.toString());
       return null;
     });

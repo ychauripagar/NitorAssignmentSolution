@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 ///AppMethods class contains the common methods used in the projects
 class AppMethods {
+
 //region  openScreen
   /// custom function to open new Screen
   static void openScreen(BuildContext buildContext, Widget screenWidgetName,

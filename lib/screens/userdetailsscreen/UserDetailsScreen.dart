@@ -75,13 +75,11 @@ class UserDetailsScreen extends StatelessWidget {
                 "Blog :",
                 style: TextStyle(fontSize: 14, color: Colors.black87),
               ),
-              FittedBox(
-                child: Text(
-                  _userDetailsItem.blog == null
-                      ? ""
-                      : "${_userDetailsItem.blog}",
-                  style: TextStyle(fontSize: 14, color: Colors.black54),
-                ),
+              Text(
+                _userDetailsItem.blog == null
+                    ? ""
+                    : "${_userDetailsItem.blog}",
+                style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
             ],
           ),
@@ -139,11 +137,16 @@ class UserDetailsScreen extends StatelessWidget {
                 ),
                 Align(
                   // alignment: Alignment.c,
-                  child: CircleAvatar(
-                    radius: 60.0,
-                    backgroundColor: Colors.white,
-                    backgroundImage: NetworkImage(_userDetailsItem.avatarUrl),
-                  ),
+                  child:  Hero(
+                    tag:_userDetailsItem.login,
+                    transitionOnUserGestures: true,
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundColor: Colors.white,
+                      backgroundImage: NetworkImage(_userDetailsItem.avatarUrl),
+                    ),
+                  )
+                  ,
                 ),
                 const SizedBox(
                   height: 8,
